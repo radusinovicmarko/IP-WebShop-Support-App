@@ -1,0 +1,25 @@
+.action-cell {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.action-cell button {
+	margin-right: 10px;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 72px);
+	flex-direction: column;
+}
+
+form {
+	width: 50%;
+}
+
+input, select {
+	width: 100%;
+}

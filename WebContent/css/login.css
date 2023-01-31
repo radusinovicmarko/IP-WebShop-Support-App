@@ -1,0 +1,11 @@
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 16px);
+	flex-direction: column;
+}
+
+input {
+	width: 50%;
+}
