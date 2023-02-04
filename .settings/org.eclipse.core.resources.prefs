@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/main/java/org/unibl/etf/ip/model/beans/MessageBean.java=UTF-8
+encoding//WebContent/WEB-INF/menu.jsp=UTF-8
+encoding//WebContent/error.jsp=UTF-8
+encoding//src/main/java/org/unibl/etf/ip/service/MessageService.java=UTF-8

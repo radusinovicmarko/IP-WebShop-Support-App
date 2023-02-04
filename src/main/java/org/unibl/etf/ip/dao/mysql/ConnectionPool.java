@@ -1,4 +1,4 @@
-package org.unibl.etf.ip.model.dao.mysql;
+package org.unibl.etf.ip.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ public class ConnectionPool {
 	private static ConnectionPool connectionPool;
 
 	static {
-		ResourceBundle bundle = PropertyResourceBundle.getBundle("org.unibl.etf.ip.model.dao.mysql.ConnectionPool");
+		ResourceBundle bundle = PropertyResourceBundle.getBundle(ConnectionPool.class.getName());
 		String jdbcURL = bundle.getString("jdbcURL");
 		String username = bundle.getString("username");
 		String password = bundle.getString("password");

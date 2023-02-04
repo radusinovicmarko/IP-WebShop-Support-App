@@ -1,13 +1,13 @@
-package org.unibl.etf.ip.model.beans;
+package org.unibl.etf.ip.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.unibl.etf.ip.model.dao.mysql.MySQLAdminDAO;
+import org.unibl.etf.ip.dao.mysql.MySQLAdminDAO;
 import org.unibl.etf.ip.model.dto.Admin;
 
-public class AdminBean {
+public class AdminService {
 	private boolean loggedIn = false;
 
-	public AdminBean() {
+	public AdminService() {
 	}
 
 	public boolean isLoggedIn() {

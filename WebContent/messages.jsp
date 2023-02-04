@@ -3,20 +3,24 @@
 <%@page import="org.unibl.etf.ip.model.dto.Message"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="messageBean"
-	class="org.unibl.etf.ip.model.beans.MessageBean" scope="session" />
-<jsp:useBean id="adminBean"
-	class="org.unibl.etf.ip.model.beans.AdminBean" scope="session"></jsp:useBean>
+<%@ page errorPage="error.jsp" %>
+<jsp:useBean id="messageService"
+	class="org.unibl.etf.ip.service.MessageService" scope="session" />
+<jsp:useBean id="adminService"
+	class="org.unibl.etf.ip.service.AdminService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <%
 	List<Message> messages = new ArrayList<>();
-	if (adminBean.isLoggedIn()) {
+	if (adminService.isLoggedIn()) {
 		if (request.getParameter("read") == null) {
-			messages = messageBean.getAll();
+			if (request.getParameter("content") == null)
+				messages = messageService.getAll();
+			else
+				messages = messageService.getAllByContent(request.getParameter("content"));
 		} else if ("true".equals(request.getParameter("read"))) {
-			messages = messageBean.getAllByStatus(true);
+			messages = messageService.getAllByStatus(true);
 		} else if ("false".equals(request.getParameter("read"))) {
-			messages = messageBean.getAllByStatus(false);
+			messages = messageService.getAllByStatus(false);
 		}
 	} else {
 		response.sendRedirect("index.jsp");
@@ -39,6 +43,11 @@
 	<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
 	<div class="container mt-3">
 		<h3>Poruke</h3>
+		<form class="d-flex" action="messages.jsp" method="post">
+        	<input class="form-control me-2" type="text" placeholder="Pretraga po sadržaju" name="content">
+        	<button class="btn btn-primary" type="submit">Pretraga</button>
+      	</form>
+      	<br />
 		<button type="button" class="btn btn-primary" onclick="location.href='messages.jsp?read=false'">Nepročitane</button>
   		<button type="button" class="btn btn-primary" onclick="location.href='messages.jsp?read=true'">Pročitane</button>
   		<button type="button" class="btn btn-primary" onclick="location.href='messages.jsp'">Sve</button>

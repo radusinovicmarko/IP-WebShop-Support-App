@@ -2,20 +2,21 @@
 <%@page import="org.unibl.etf.ip.model.dto.Message"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="messageBean"
-	class="org.unibl.etf.ip.model.beans.MessageBean" scope="session" />
-<jsp:useBean id="adminBean"
-	class="org.unibl.etf.ip.model.beans.AdminBean" scope="session"></jsp:useBean>
+<%@ page errorPage="error.jsp" %>
+<jsp:useBean id="messageService"
+	class="org.unibl.etf.ip.service.MessageService" scope="session" />
+<jsp:useBean id="adminService"
+	class="org.unibl.etf.ip.service.AdminService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <%
 	Message message = new Message();
-	if (adminBean.isLoggedIn()) {
+	if (adminService.isLoggedIn()) {
 		if (request.getParameter("id") != null) {
 			try {
 				int id = Integer.parseInt(request.getParameter("id"));
-				message = messageBean.getById(id);
+				message = messageService.getById(id);
 				if (!message.isRead())
-					messageBean.read(id, message);
+					messageService.read(id, message);
 			} catch (Exception ex) {
 			response.sendRedirect("messages.jsp");
 		}
@@ -23,7 +24,7 @@
 		String email = request.getParameter("email");
 		String title = request.getParameter("title");
 		String responseText = request.getParameter("response");
-		messageBean.sendResponse(email, title, responseText);
+		messageService.sendResponse(email, title, responseText);
 		response.sendRedirect("messages.jsp");
 	} else
 		response.sendRedirect("index.jsp");
@@ -48,7 +49,7 @@
 	<jsp:include page="WEB-INF/menu.jsp"></jsp:include>
 	<div class="form container mt-3">
 		<h3>Odgovor na poruku</h3>
-		<form action="response.jsp">
+		<form action="response.jsp" method="post">
 			<div class="mb-3 mt-3">
 				<label class="form-label">Naslov:</label>
 				<input type="text" class="form-control"

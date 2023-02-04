@@ -1,4 +1,4 @@
-package org.unibl.etf.ip.model.dao.mysql;
+package org.unibl.etf.ip.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

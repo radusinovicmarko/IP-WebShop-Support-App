@@ -1,4 +1,4 @@
-package org.unibl.etf.ip.model.dao;
+package org.unibl.etf.ip.dao;
 
 import org.unibl.etf.ip.model.dto.Admin;
 

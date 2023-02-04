@@ -1,11 +1,11 @@
-package org.unibl.etf.ip.model.dao.mysql;
+package org.unibl.etf.ip.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.unibl.etf.ip.model.dao.AdminDAO;
+import org.unibl.etf.ip.dao.AdminDAO;
 import org.unibl.etf.ip.model.dto.Admin;
 
 public class MySQLAdminDAO implements AdminDAO {

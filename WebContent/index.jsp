@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="adminBean" class="org.unibl.etf.ip.model.beans.AdminBean" scope="session"></jsp:useBean>
+<%@ page errorPage="error.jsp" %>
+<jsp:useBean id="adminService" class="org.unibl.etf.ip.service.AdminService" scope="session"></jsp:useBean>
 <!DOCTYPE html>
 <%
 	if (request.getParameter("submit") != null) {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		if (adminBean.login(username, password)) {
+		if (adminService.login(username, password)) {
 			session.removeAttribute("loginMessage");
 			response.sendRedirect("messages.jsp");
 		} else {
