@@ -48,9 +48,9 @@
         	<button class="btn btn-primary" type="submit">Pretraga</button>
       	</form>
       	<br />
-		<button type="button" class="btn btn-primary" onclick="location.href='messages.jsp?read=false'">Nepročitane</button>
-  		<button type="button" class="btn btn-primary" onclick="location.href='messages.jsp?read=true'">Pročitane</button>
-  		<button type="button" class="btn btn-primary" onclick="location.href='messages.jsp'">Sve</button>
+		<a class="btn btn-primary" href="messages.jsp?read=false">Nepročitane</a>
+  		<a class="btn btn-primary" href="messages.jsp?read=true">Pročitane</a>
+  		<a class="btn btn-primary" href="messages.jsp">Sve</a>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
@@ -71,8 +71,8 @@
 						<td><input class="form-check-input" type="checkbox"
 							<%=message.isRead() ? "checked" : ""%> disabled /></td>
 						<td class="action-cell">
-							<button type="button" class="btn btn-primary"
-								onclick=<%="location.href=\"response.jsp?id=" + message.getId() + "\""%>>Pregledajte</button>
+							<a class="btn btn-primary"
+								href=<%="\"response.jsp?id=" + message.getId() + "\""%>>Pregledajte</a>
 						</td>
 					</tr>
 					<%
