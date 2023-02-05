@@ -12,8 +12,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: calc(100vh - 72px);
+	height: calc(100%);
 	flex-direction: column;
+	overflow: auto; 
+}
+
+.form:after {
+	clear: both;
+	display: block;
 }
 
 form {

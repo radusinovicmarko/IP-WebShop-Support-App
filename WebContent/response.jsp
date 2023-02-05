@@ -53,7 +53,7 @@
 			<div class="mb-3 mt-3">
 				<label class="form-label">Naslov:</label>
 				<input type="text" class="form-control"
-					value=<%=message.getTitle()%> placeholder="Naslov" name="title"
+					value="<%=message.getTitle()%>" placeholder="Naslov" name="title"
 					readonly />
 			</div>
 			<div class="mb-3 mt-3">

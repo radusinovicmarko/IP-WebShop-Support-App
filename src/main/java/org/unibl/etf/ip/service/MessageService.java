@@ -19,7 +19,7 @@ import org.unibl.etf.ip.model.dto.Message;
 
 public class MessageService {
 
-	private static final String BEGIN = "U nastavku Vam dostavljamo odgovor na e-mail naslovljen sa ";
+	private static final String BEGIN = "U nastavku Vam dostavljamo odgovor na pitanje naslovljeno sa ";
 
 	public List<Message> getAll() {
 		return new MySQLMessageDAO().getAll();
@@ -61,9 +61,9 @@ public class MessageService {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
 			message.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse(email));
-			message.setSubject("Odgovor od korisni�?ke podrške", StandardCharsets.UTF_8.name());
+			message.setSubject("Odgovor od korisničke podrške", StandardCharsets.UTF_8.name());
 			MimeBodyPart mimeBodyPart = new MimeBodyPart();
-			mimeBodyPart.setContent(BEGIN + title + ":<br /><br />" + response, "text/html; charset=utf-8");
+			mimeBodyPart.setContent(BEGIN + title + ":<br /><br />" + response, "text/html; charset=UTF-8");
 			Multipart multipart = new MimeMultipart();
 			multipart.addBodyPart(mimeBodyPart);
 			message.setContent(multipart);
